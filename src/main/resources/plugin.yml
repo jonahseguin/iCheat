@@ -1,0 +1,12 @@
+name: iCheat
+main: com.shawckz.icheat.ICheat
+version: 1.0.0 (MC-1.7.10)
+author: Shawckz
+website: http://shawckz.com
+description: Anti-Cheat designed for PvP Servers
+
+commands:
+  icheat:
+    usage: /<command>
+    aliases: [cheat, anticheat, hacks, hax, '!', '!']
+    description: iCheat General command
