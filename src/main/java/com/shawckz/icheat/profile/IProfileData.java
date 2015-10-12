@@ -10,5 +10,11 @@ import lombok.Data;
 public class IProfileData {
 
     private double[] clicksPerSecond = new double[]{0,0,0,0};
+    private long bowPull = 0;
+    private long bowShoot = 0;
+    private double bowPower = 0;
+    private double healthPerSecond = 0;
+    private long lastGroundTime = 0;
+    private double blocksPerSecond = 0;
 
 }

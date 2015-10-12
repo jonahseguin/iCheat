@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/check/CheckType.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/cmd/CmdArgs.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/cmd/Command.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/cmd/CommandHandler.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/cmd/ICommand.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/configuration/AbstractSerializer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/configuration/Configuration.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/configuration/annotations/ConfigData.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/configuration/annotations/ConfigSerializer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/configuration/exceptions/NotASerializerException.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/profile/cache/AbstractCache.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/profile/cache/CachePlayer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/shawckz/icheat/util/Distance.java" charset="UTF-8" />
+  </component>
+</project>

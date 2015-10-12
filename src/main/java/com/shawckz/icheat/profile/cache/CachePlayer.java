@@ -5,12 +5,11 @@
 package com.shawckz.icheat.profile.cache;
 
 
-import com.shawckz.icheat.database.mongo.AutoMongo;
 
 /**
  * Created by Jonah on 6/11/2015.
  */
-public abstract class CachePlayer extends AutoMongo {
+public abstract class CachePlayer {
 
     public abstract String getName();
 

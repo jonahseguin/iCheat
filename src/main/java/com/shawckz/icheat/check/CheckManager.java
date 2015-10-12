@@ -5,7 +5,7 @@
 package com.shawckz.icheat.check;
 
 import com.shawckz.icheat.ICheat;
-import com.shawckz.icheat.checks.CheckAutoClick;
+import com.shawckz.icheat.checks.*;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -23,7 +23,15 @@ public class CheckManager {
     }
 
     public void setupChecks(){
+        checks.clear();
         checks.put(CheckType.AUTO_CLICK, new CheckAutoClick());
+        checks.put(CheckType.TAB_COMPLETE, new CheckTabComplete());
+        checks.put(CheckType.FAST_BOW, new CheckFastBow());
+        checks.put(CheckType.HEAD_ROLL, new CheckHeadRoll());
+        checks.put(CheckType.FAST_HEAL, new CheckFastHeal());
+        checks.put(CheckType.VCLIP, new CheckVClip());
+        checks.put(CheckType.FLY, new CheckFly());
+        checks.put(CheckType.SPEED, new CheckSpeed());
 
         for(Check c : checks.values()){
             c.setup();

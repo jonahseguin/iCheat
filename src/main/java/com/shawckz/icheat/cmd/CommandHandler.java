@@ -5,6 +5,10 @@
 package com.shawckz.icheat.cmd;
 
 import com.shawckz.icheat.ISettings;
+import com.shawckz.icheat.cmd.commands.CommandAlerts;
+import com.shawckz.icheat.cmd.commands.CommandHelp;
+import com.shawckz.icheat.cmd.commands.CommandStatus;
+import com.shawckz.icheat.cmd.commands.CommandToggleCheck;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -16,15 +20,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/**
- * Created by 360 on 5/30/2015.
- */
 
-/**
- * The CommandHandler object
- * Used to register a set of commands and handle them within a JavaPlugin
- * ***Requires adding the commands to your plugin.yml***
- */
 public class CommandHandler implements CommandExecutor {
 
     @Getter private List<ICommand> commands;
@@ -37,6 +33,10 @@ public class CommandHandler implements CommandExecutor {
         javaPlugin.getCommand("icheat").setExecutor(this);
 
         // Register sub-commands
+        registerCommand(new CommandAlerts(), true);
+        registerCommand(new CommandStatus(), false);
+        registerCommand(new CommandHelp(), false);
+        registerCommand(new CommandToggleCheck(), false);
     }
 
     private void registerCommand(ICommand cmd,boolean single){

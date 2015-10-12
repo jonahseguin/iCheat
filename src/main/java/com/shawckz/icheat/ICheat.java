@@ -7,6 +7,8 @@ package com.shawckz.icheat;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.shawckz.icheat.autoban.AutobanManager;
+import com.shawckz.icheat.check.CheckManager;
+import com.shawckz.icheat.cmd.CommandHandler;
 import com.shawckz.icheat.profile.cache.ICache;
 
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,17 +20,16 @@ public class ICheat extends JavaPlugin {
     private ICache cache;
     private AutobanManager autobanManager;
     private ProtocolManager protocolManager;
-
-    @Override
-    public void onLoad(){
-        protocolManager = ProtocolLibrary.getProtocolManager();
-    }
+    private CommandHandler commandHandler;
 
     @Override
     public void onEnable(){
         instance = this;
+        protocolManager = ProtocolLibrary.getProtocolManager();
         this.cache = new ICache(this);
         this.autobanManager = new AutobanManager(this);
+        this.commandHandler = new CommandHandler(this);
+        CheckManager.get().setupChecks();
     }
 
     @Override
@@ -38,6 +39,10 @@ public class ICheat extends JavaPlugin {
 
     public static ICheat getInstance() {
         return instance;
+    }
+
+    public CommandHandler getCommandHandler() {
+        return commandHandler;
     }
 
     public ProtocolManager getProtocolManager() {

@@ -39,14 +39,14 @@ public class IViolationAlert extends IAlert{
             new FancyMessage(ISettings.PREFIX + " ")
                     .then(ChatColor.translateAlternateColorCodes('&',
                             profile.getBukkitPlayer().getDisplayName()+"&7(&c"+violation.getTotalVL()+"&7)&r &7failed &9"+
-                                    violation.getCheck().getName()+" &7[&c"+violation.getVl()+"&7]"))
+                                    violation.getCheck().getName()+"&7[&c"+violation.getVl()+"&7]"))
                     .send(profile.getBukkitPlayer());
         }
         else{
             new FancyMessage(ISettings.PREFIX + " ")
                     .then(ChatColor.translateAlternateColorCodes('&',
                             profile.getBukkitPlayer().getDisplayName()+"&7(&c"+violation.getTotalVL()+"&7)&r &7failed &9"+
-                                    violation.getCheck().getName()+" &7(&3"+detail+"&7)[&c"+violation.getVl()+"&7]"))
+                                    violation.getCheck().getName()+"&7(&c"+detail+"&7)[&c"+violation.getVl()+"&7]"))
                     .send(profile.getBukkitPlayer());
         }
     }

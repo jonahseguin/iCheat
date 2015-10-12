@@ -8,11 +8,8 @@ import com.shawckz.icheat.check.Check;
 import com.shawckz.icheat.check.CheckManager;
 import com.shawckz.icheat.check.CheckType;
 import com.shawckz.icheat.check.Violation;
-import com.shawckz.icheat.database.mongo.annotations.CollectionName;
-import com.shawckz.icheat.database.mongo.annotations.MongoColumn;
 import com.shawckz.icheat.profile.cache.CachePlayer;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -21,15 +18,14 @@ import java.util.Map;
 
 import org.bukkit.entity.Player;
 
-@CollectionName(name = "icheatplayers")
 @Getter
 @Setter
 @RequiredArgsConstructor
 public class IProfile extends CachePlayer {
 
-    @MongoColumn(name = "name") @NonNull private String name;
-    @MongoColumn(name = "uniqueId") @NonNull  private String uniqueId;
-    @MongoColumn(name = "totalVL") private int totalVL = 0;
+    private final String name;
+    private final String uniqueId;
+    private int totalVL = 0;
 
     private Player bukkitPlayer;
     private boolean alertsEnabled = false;

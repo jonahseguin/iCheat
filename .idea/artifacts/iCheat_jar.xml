@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="iCheat:jar">
+    <output-path>Z:/Test Server 3 (Single plugins only)/plugins</output-path>
+    <root id="archive" name="iCheat.jar">
+      <element id="module-output" name="iCheat" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/mkremins/fanciful/0.3.1/fanciful-0.3.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

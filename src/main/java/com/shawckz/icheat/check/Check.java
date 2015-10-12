@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.bukkit.Bukkit;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
@@ -57,8 +58,15 @@ public abstract class Check extends CheckConfig implements Listener {
     }
 
     protected final Violation fail(IProfile profile, String... detail){
+        return fail(profile, null, detail);
+    }
+
+    protected final Violation fail(IProfile profile, Cancellable cancellable, String... detail){
         if(this.isCancel()){
             cancel(profile);
+            if(cancellable != null){
+                cancellable.setCancelled(true);
+            }
         }
 
         final Violation violation = profile.addVL(this.getCheckType(),this.isCancel());

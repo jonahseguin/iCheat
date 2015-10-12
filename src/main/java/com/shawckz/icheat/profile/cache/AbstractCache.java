@@ -4,12 +4,6 @@
 
 package com.shawckz.icheat.profile.cache;
 
-import com.mongodb.BasicDBObject;
-import com.shawckz.icheat.database.mongo.AutoMongo;
-import com.shawckz.icheat.database.mongo.annotations.MongoColumn;
-
-import java.lang.reflect.Field;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -20,9 +14,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * Created by Jonah on 6/11/2015.
@@ -54,38 +46,8 @@ public abstract class AbstractCache implements Listener {
             return players.get(name);
         }
         else{
-            CachePlayer cp = loadCachePlayer(name);
-            if(cp != null){
-                return cp;
-            }
-            else{
-                return null;
-            }
+            return null;
         }
-    }
-
-    public CachePlayer loadCachePlayer(String name){
-        String key = "username";
-        for(Field f : aClass.getDeclaredFields()){
-            MongoColumn row = f.getAnnotation(MongoColumn.class);
-            if(row != null){
-                if(row.identifier()){
-                    if(row.name().equalsIgnoreCase("name") || f.getName().equalsIgnoreCase("username")){
-                        key = row.name();
-                        break;
-                    }
-                }
-            }
-        }
-
-        List<AutoMongo> autoMongos = CachePlayer.select(new BasicDBObject(key,name),aClass);
-        for(AutoMongo mongo : autoMongos){
-            if(mongo instanceof CachePlayer){
-                CachePlayer cachePlayer = (CachePlayer) mongo;
-                return cachePlayer;
-            }
-        }
-        return null;
     }
 
     public CachePlayer getBasePlayer(Player p){
@@ -124,14 +86,8 @@ public abstract class AbstractCache implements Listener {
     public void onCache(final AsyncPlayerPreLoginEvent e) {
         final String name = e.getName();
         final String uuid = e.getUniqueId().toString();
-        CachePlayer cp = loadCachePlayer(e.getName());
-        if(cp != null){
-            put(cp);
-        }
-        else{
-            cp = create(name,uuid);
-            put(cp);
-            cp.update();
+        if(!players.containsKey(name)){
+            players.put(name, create(name, uuid));
         }
     }
 
@@ -147,23 +103,5 @@ public abstract class AbstractCache implements Listener {
     public abstract CachePlayer create(String name, String uuid);
 
     public abstract void init(Player player,CachePlayer cachePlayer);
-
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onQuit(final PlayerQuitEvent e){
-        final Player p = e.getPlayer();
-        save(p);
-    }
-
-    public void save(Player p){
-        if(contains(p.getName())){
-            final CachePlayer cachePlayer = (aClass.cast(getBasePlayer(p)));
-            new BukkitRunnable(){
-                @Override
-                public void run() {
-                    cachePlayer.update();
-                }
-            }.runTaskAsynchronously(plugin);
-        }
-    }
 
 }

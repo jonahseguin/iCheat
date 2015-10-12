@@ -4,8 +4,10 @@
 
 package com.shawckz.icheat.profile.cache;
 
+import com.shawckz.icheat.ISettings;
 import com.shawckz.icheat.profile.IProfile;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -36,7 +38,12 @@ public class ICache extends AbstractCache {
     public void init(Player player, CachePlayer cachePlayer) {
         if(cachePlayer instanceof IProfile){
             IProfile profile = (IProfile) cachePlayer;
-            //TODO: Setup
+            profile.setBukkitPlayer(player);
+            if(player.hasPermission(ISettings.PERMISSION_USE) && player.hasPermission("icheat.alerts")){
+                profile.setAlertsEnabled(true);
+                player.sendMessage(ISettings.PREFIX + ChatColor.translateAlternateColorCodes('&', " &7Alerts have been "
+                        + (profile.isAlertsEnabled() ? "&aenabled" : "&cdisabled") + "&7."));
+            }
         }
     }
 }

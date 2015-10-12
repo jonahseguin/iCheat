@@ -22,7 +22,7 @@ public enum CheckType {
     ANTI_KNOCKBACK("AntiKnockback"),
     FAST_BOW("FastBow"),
     CRITICALS,
-    REGEN,
+    FAST_HEAL("FastHeal"),
     NO_SLOW_DOWN("NoSlowDown"),
     AURA_TWITCH("AuraTwitch"),
     PHASE,
